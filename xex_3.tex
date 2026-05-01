@@ -148,6 +148,40 @@
 
 	\end{itemize}
 
+	For the second part, consider $f^{'}: ((Y))^G \to ((Y))^H, \ p \mapsto p^{*}$, where 
+	$p^{*}(h) := 
+	\begin{cases}
+		p(h) & \text{ if } h \in G  \\
+		y_0  & else
+	\end{cases}
+	$
+
+	We claim as above that this is the desired reduction. 
+
+	\begin{itemize}
+		\item well defined: \\
+			We have to check that 
+			$\forall p \in ((Y))^G \ p^{*} \in ((Y))^{H}$.
+			Let $h \in H$ such that $h \cdot p^{*} = p^{*}$.
+			Then $\forall t \in H \ (h \cdot p^{*})(t) = p^{*}(t)$.
+			Equivalently $\forall t \in H \ p^{*}(h^{-1} \cdot t) = p^{*}(t)$.
+			In particular $\forall g \in G \ p^{*}(h^{-1} \cdot h \cdot g) = p^{*}(h \cdot g)$.
+			Then $\forall g \in G \ p^{*}(g) = p^{*}(h \cdot g)$.
+			Now there are two possibilities:
+			\begin{itemize}
+				\item $h \in H \setminus G$: \\
+					In this case we have 
+					$\forall g \in G \ p(g) = p^{*}(g) = p^{*}(h \cdot g) = y_0$.
+					This means that $p = cost_{y_0}$.
+					Since $G \not = \{1\}$ we have $p \not \in ((Y))^{G}$, a contradiction.
+				\item $h \in G$: \\
+					In this case we have 
+					$\forall g \in G \ p(g) = p^{*}(g) = p^{*}(h \cdot g) = p(h \cdot g) = (h^{-1} \cdot p)(g)$
+					This means that $p = h^{-1} \cdot p$.
+					Since $p \in ((Y))^{G}$, it must be $h^{-1} = 1$. Then $h = 1$, as desired.
+		\item reduction: \\
+		\item Borel: \\
+	\end{itemize}
 
 \end{proof}
 
