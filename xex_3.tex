@@ -179,7 +179,13 @@
 					$\forall g \in G \ p(g) = p^{*}(g) = p^{*}(h \cdot g) = p(h \cdot g) = (h^{-1} \cdot p)(g)$
 					This means that $p = h^{-1} \cdot p$.
 					Since $p \in ((Y))^{G}$, it must be $h^{-1} = 1$. Then $h = 1$, as desired.
+			\end{itemize}
 		\item reduction: \\
+			We must prove that $\forall p,q \in ((Y))^G \ \bigg( p F(G,Y) q \iff p^{*} F(H,Y) q^{*} \bigg)$
+			This follows basically from $f$ being a reduction.
+			In fact:
+			$p F(G,Y) q \iff p E(G,Y) q \iff f(p) E(H,Y) f(q)
+					\iff f'(p) E(H,Y) f'(q) \iff f'(p) F(H,Y) f'(q)$
 
 		\item Borel: \\
 			This follows from the Borelness of $f$, since
