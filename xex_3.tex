@@ -1,0 +1,182 @@
+\documentclass[a4paper,12pt]{article}
+
+\title{Blocco 3}
+\author{Leonardo Centazzo}
+\date{\today}
+
+
+% Pacchetti essenziali
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+\usepackage{geometry}
+
+% Impostazioni pagina minime
+\geometry{a4paper, margin=2cm}
+
+% Stili per teoremi, proposizioni, ecc.
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}
+\newtheorem{proposizione}{Proposizione}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollario}{Corollario}
+
+\theoremstyle{definition}
+\newtheorem{definizione}[teorema]{Definizione}
+\newtheorem{esempio}[teorema]{Esempio}
+\newtheorem{esercizio}{Esercizio}
+\newtheorem{osservazione}[teorema]{Osservazione}
+
+\newtheorem*{warning}{Warning}
+
+\theoremstyle{remark}
+\newtheorem{nota}[teorema]{Nota}
+
+
+\begin{document}
+
+\maketitle
+
+
+\begin{esercizio}
+	Let $G$ be any countable group. Consider $2^G, (2^\omega)^G$ equipped with the shift action.
+	Prove that there exists an injective, $G$-equivariant function from $2^G$ to $(2^\omega)^G$.
+\end{esercizio}
+
+\begin{proof}
+	Consider $f: 2^G \to (2^\omega)^G, \ x \mapsto x^{*}$, where
+	$\forall g \in G, n < \omega \ x^{*}(g)(n) := x(g)$.
+	We want to prove:
+	\begin{itemize}
+		\item $f$ is $G$-equivariant: \\
+			Let $g \in G, x \in 2^{\omega}$. We want to prove that $f(g \cdot x) = g \cdot f(x)$.
+			We evaluate both and check they are the same:
+			\[
+				f(g \cdot x)(h)(n) = (g \cdot x)^{*} (h)(n) =
+				(g \cdot x) (h) = x(g^{-1} \cdot h)
+			\]
+
+			\[
+				(g \cdot f(x))(h)(n) = (g \cdot x^{*})(h)(n) = 
+				x^{*}(g^{-1} \cdot h)(n) = x(g^{-1} \cdot n)
+			\]
+
+		\item $f$ is injective: \\
+			Let $x_1 \not = x_2 \in 2^{\omega}$. Then $x_1 (g) \not = x_2(g)$ for some $g \in G$.
+			Then $x_1 ^{*}(g)(0) = x_1 (g) \not = x_2 (g) = x_2 ^{*}(g)(0)$.
+			Thus $x_1 ^{*} \not = x_2 ^{*}$.
+
+	\end{itemize}
+
+\end{proof}
+
+
+
+
+
+\begin{esercizio}
+	Let $G,H$ be countable groups and $Y$ a Polish space.
+	Prove that if $\{1\} \not = G \leq H$, then:
+	\begin{enumerate}
+		\item $E(G,Y) \leq_B E(H,Y)$
+		\item $F(G,Y) \leq_B F(H,Y)$
+	\end{enumerate}
+\end{esercizio}
+
+\begin{proof}
+	Fix $y_0 \in Y$. Then consider $f: Y^G \to Y^H, \ p \mapsto p^{*}$, where 
+	$p^{*}(h) := 
+	\begin{cases}
+		p(h) & \text{ if } h \in G  \\
+		y_0  & else
+	\end{cases}
+	$
+
+	We must prove:
+	\begin{itemize}
+		\item $f$ is a reduction from $E(G,Y)$ to $E(H,Y)$ \\
+			\begin{itemize}
+				\item $\forall p,q \in Y^{G}, g \in G \ \bigg( p = g \cdot q \Rightarrow p^{*} = g \cdot q^{*} \bigg)$ \\
+
+					Let's consider two cases:
+					\begin{itemize}
+						\item $h \in G$
+							\[
+								p^{*} (h) = p(h) = (g \cdot q)(h) = 
+								q(g^{-1} \cdot h) = q^{*}(g^{-1} \cdot h) =
+								(g \cdot q^{*})(h)
+							\]
+						\item $h \not \in G$ 
+							\[
+								p^{*} (h) = y_0 = q^{*}(g^{-1} \cdot h) = (g \cdot q^{*})(h)
+							\]
+
+					\end{itemize}
+
+				\item $\forall p,q \in Y^{G}, h \in H \ 
+					\bigg( p^{*} = h \cdot q^{*} \Rightarrow (\exists g \in G \ p^{*} = g \cdot q^{*}) \bigg)$ \\
+
+					Let $h \in H \setminus G$ such that $p^{*} = h \cdot q^{*}$.
+					Then 
+					\[
+						\forall t \in H \ \ 
+						p^{*}(t) = (h \cdot q^{*})(t) = q^{*}(h^{-1} \cdot t)
+					\]
+					
+					In particular 
+					\[
+						\forall g \in G \ \ y_0 = p^{*}(h \cdot g) = q^{*}(g) = q(g)
+					\]
+
+					Then $q = cost_{y_0}$. Then $q^{*} = cost_{y_0}$. Then $p^{*} = cost_{y_0}$.
+					Then $p^{*} = 1_{H} \cdot q^{*}$.
+
+
+				\item $\forall p,q \in Y^{G}, g \in G 
+					\bigg( p^{*} = g \cdot q^{*} \Rightarrow p = g \cdot q \bigg) $ 
+
+					\begin{align*}
+						p^{*} = g \cdot q^{*} \Rightarrow & \forall h \in H \ p^{*}(h) = q^{*}(g^{-1} \cdot h) \\
+						\Rightarrow & \forall t \in G \ p(t) = p^{*}(t) = q^{*}(g^{-1} \cdot t) = 
+										q(g^{-1} \cdot t) = (g \cdot q)(t)
+					\end{align*}
+			\end{itemize}
+
+		\item $f$ is Borel \\
+			\[
+				(s,r) \in f \iff \bigg( (\forall g \in G \ s(g) = r(g)) \land (\forall h \in H \setminus G \ r(h) = y_0) \bigg)
+			\]
+
+	\end{itemize}
+
+
+\end{proof}
+
+
+
+
+
+\begin{esercizio}
+	Let $E,F$ cber on $X$. Prove that if $E \subseteq F$ and $F$ is treeable, then $E$ is also treeable.
+\end{esercizio}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+\begin{esercizio}
+	Let $X,Y$ be standard Borel spaces, $a:G \curvearrowright X , b:G \curvearrowright Y $ be Borel actions on $X,Y$ respectively.
+	Suppose that $f:X \to Y$ be orbit-wise injective, $G$ equivariant, Borel map.
+	Prove that if $E_b$ has the cocycle property, then so does $E_a$.
+\end{esercizio}
+
+\begin{proof}
+
+\end{proof}
+
+
+\end{document}
+
