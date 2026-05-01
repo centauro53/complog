@@ -217,7 +217,34 @@
 \end{esercizio}
 
 \begin{proof}
+	
+	Let $\rho: E_b \to G$ be a cocycle.
+	Consider $\delta : E_a \to G, \ (x_1,x_2) \mapsto \rho(f(x_1),f(x_2))$.
+	We need to prove the following claims.
+	\begin{itemize}
+		\item $\delta$ is well defined: \\
+			We need to verify that
+			$\forall (x_1,x_2) \in E_a \ \bigg( (f(x_1),f(x_2)) \in E_b \bigg)$.
+			To see this observe that
+			$(x_1,x_2) \in E_a \Rightarrow x_1 = g \cdot x_2 \Rightarrow f(x_1) = f(g \cdot x_2) = g \cdot f(x_2) 
+			\Rightarrow f(x_1) E_b f(x_2)$
+		\item $\delta$ is cocycle for $E_a$: \\
+			We need to verify the following:
+			\begin{itemize}
+				\item $\delta(x_1,x_2) = \delta(x_2,x_3) \cdot \delta(x_1,x_2)$: \\
+					$\delta(x_2,x_3) \cdot \delta(x_1,x_2) =
+					\rho(f(x_1),f(x_2)) \cdot \rho(f(x_1),f(x_2)) =
+					\rho (f(x_1),f(x_2)) = \delta(x_1,x_2)$
+				\item $\delta(x_1,x_2) \cdot x_1 = x_2$: \\
+					First observe that $x_1 E_a x_2 \Rightarrow \delta(x_1,x_2) \cdot x_1 E_a x_2$.
+					Now, by orbit-wise injectivity of $f$ we just need to check that 
+					$f(\delta(x_1,x_2) \cdot x_1) = f(x_2)$.
+					This is true because 
+					$f(\delta(x_1,x_2) \cdot x_1) = \delta(x_1,x_2) \cdot f(x_1) =
+					\rho(f(x_1),f(x_2)) \cdot f(x_1) = f(x_2)$
+			\end{itemize}
 
+	\end{itemize}
 \end{proof}
 
 
