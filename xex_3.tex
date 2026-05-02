@@ -209,6 +209,75 @@
 	Call $\langle x_0,..,x_n \rangle \in X^{< \omega}$ a T-path if $\forall i<n \ \ x_i T x_{i+1}$.
 	Given $x \in X$ and an $E$-class $C$, denote $PATH_{x,C} := \{s \in X^{< \omega} : s\text{ is a }T-path\text{ starting from }x 
 	\text{ and ending in }C\}$.
+	Now, given $x,C$ as above we can define
+	$\phi: PATH_{x,C} \to \omega^{< \omega}, \langle x, y_1, .., y_k\rangle \mapsto \langle i_1,..,i_k \rangle$, where 
+	$i_j = \text{min}\{n \in \omega : g_n \cdot y_{j-1} = y_j\}$ (consider $x$ as $y_0$ to evaluate $i_1$).
+	In particular $\phi(x) = \emptyset$.
+	One can consider the lexicographic order on $\omega ^{< \omega}$, $\leq_{lex}$, where we consider $s \leq t$ if $s$ is an initial segment of $t$.
+	Since $\phi$ is injective and $\leq_{lex}$ is a well order, we can define a well order on $PATH_{x,C}$, $\leq_{x,C}$ by setting
+	$\forall s,t \in PATH_{x,C} \ s \leq_{x,C} t \iff \phi(s) \leq_{lex} \phi(t)$.
+	Now consider $\rho: X^2 \to X$, with 
+	\[
+	\rho(x,y) :=
+	\begin{cases}
+		\text{the last element of min}(PATH_{x,[y]_E} & \text{ if } x F y   \\
+		x & else
+	\end{cases}
+	\]
+	Note that $\rho(x,y) = x \iff \bigg( x E y \lor x \not F y\bigg)$.
+	Now we can define a Borel treeing for $E$.
+	Consider $t \subseteq X^2$ given by
+	\[
+		x_1 t x_2 \iff 
+		\bigg( x_1 E x_2 \land 
+		\big(\exists i < \omega \exists j < \omega 
+		(g_i \cdot x_1 T g_j \cdot x_2 \land \rho(g_i \cdot x_1,x_1) = x_1 \land \rho(g_j \cdot x_2,x_2) = x_2)
+		\big) \bigg)
+	\]
+
+	We have to prove the following claims to conclude.
+	\begin{itemize}
+		\item $t$ is Borel \\
+			This follows from the Borelness of $E,T,\rho$. The Borelness of $\rho$ is proven below.
+		\item $\rho$ is Borel \\
+			\[
+				(x,y,z) \in \rho \iff 
+				\bigg( (x = z \land x \not F y) \lor (x F y \land \text{min}(PATH_{x,[y]_E}) \text{ ends in }z )\bigg)
+			\]
+
+			Before expanding the last part it is useful introducing the following notation:
+			given $\vec{l} \in \omega^{< \omega}$, define
+			\[
+				\langle x, g_{\vec{l}} \cdot x \rangle :=
+				\begin{cases}
+					\langle x \rangle & \text{ if length}(\vec{l}) = 0 \\
+					\langle x, g_{\vec{l} \restriction \text{length}(\vec{l}-1)} \cdot x \rangle \frown 
+					\langle (\prod_{i \leq \text{length}(l)} g_i) \cdot x \rangle & \text{ else }
+				\end{cases}
+			\]
+
+			Now $\text{min}(Path_{x,[y]_E})$ ends in $z$ can be expressed as:
+			\begin{align*}
+				\exists n< \omega 
+				\exists \vec{i} \in \omega^{n}
+				\bigg(
+				& (\langle x, g_{\vec{i}} \rangle \text{ is }T \text{-path ending in }z) 
+				\land \\
+				& (\forall k<n \forall \vec{j} \in \omega^{k} 
+					\langle x, g_{\vec{j}} \cdot x \rangle(k) \in [y]_E \to 
+					\langle x, g_{\vec{j}} \cdot x \rangle \text{ is not }T\text{-path})
+				\land \\
+				& (\forall \vec{l} \in \omega^{n}
+					\langle x, g_{\vec{j}} \cdot x \rangle(k) \in [y]_E \to
+					\langle x, g_{\vec{i}} \cdot x \rangle \leq_{x,[y]_E} \langle x, g_{\vec{l}} \cdot x\rangle
+				)
+				\bigg)
+			\end{align*}
+
+		\item $t$ does not contain cycles \\
+		\item $\{\text{classes of } E \} = \{\text{connected components of } t\}$
+	\end{itemize}
+
 \end{proof}
 
 
