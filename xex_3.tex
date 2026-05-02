@@ -57,7 +57,7 @@
 
 			\[
 				(g \cdot f(x))(h)(n) = (g \cdot x^{*})(h)(n) = 
-				x^{*}(g^{-1} \cdot h)(n) = x(g^{-1} \cdot n)
+				x^{*}(g^{-1} \cdot h)(n) = x(g^{-1} \cdot h)
 			\]
 
 		\item $f$ is injective: \\
@@ -197,7 +197,6 @@
 
 
 
-
 \begin{esercizio}
 	Let $E,F$ cber on $X$. Prove that if $E \subseteq F$ and $F$ is treeable, then $E$ is also treeable.
 \end{esercizio}
@@ -213,15 +212,18 @@
 	$\phi: PATH_{x,C} \to \omega^{< \omega}, \langle x, y_1, .., y_k\rangle \mapsto \langle i_1,..,i_k \rangle$, where 
 	$i_j = \text{min}\{n \in \omega : g_n \cdot y_{j-1} = y_j\}$ (consider $x$ as $y_0$ to evaluate $i_1$).
 	In particular $\phi(x) = \emptyset$.
-	One can consider the lexicographic order on $\omega ^{< \omega}$, $\leq_{lex}$, where we consider $s \leq t$ if $s$ is an initial segment of $t$.
-	Since $\phi$ is injective and $\leq_{lex}$ is a well order, we can define a well order on $PATH_{x,C}$, $\leq_{x,C}$ by setting
-	$\forall s,t \in PATH_{x,C} \ s \leq_{x,C} t \iff \phi(s) \leq_{lex} \phi(t)$.
+	One can consider the lexicographic order on $\omega ^{< \omega}$, $\leq_{lex}$, 
+	where in particular we put $s \leq t$ if $s$ is an initial segment of $t$.
+	Since $\phi$ is injective and $\leq_{lex}$ is a well order, we can define a well order on $PATH_{x,C}$, $\leq_{x,C}$, by setting
+	\[
+		\forall s,t \in PATH_{x,C} \ \big(s \leq_{x,C} t \iff \phi(s) \leq_{lex} \phi(t) \big)
+	\]
 	Now consider $\rho: X^2 \to X$, with 
 	\[
 	\rho(x,y) :=
 	\begin{cases}
-		\text{the last element of min}(PATH_{x,[y]_E} & \text{ if } x F y   \\
-		x & else
+		\text{the last element of min}(PATH_{x,[y]_E}) & \text{ if } x F y   \\
+		x & \text{else}
 	\end{cases}
 	\]
 	Note that $\rho(x,y) = x \iff \bigg( x E y \lor x \not F y\bigg)$.
@@ -238,7 +240,7 @@
 	We have to prove the following claims to conclude.
 	\begin{itemize}
 		\item $t$ is Borel \\
-			This follows from the Borelness of $E,T,\rho$. The Borelness of $\rho$ is proven below.
+			This follows from the Borelness of $E,T,\rho$. we prove the Borelness of $\rho$ below.
 		\item $\rho$ is Borel \\
 			\[
 				(x,y,z) \in \rho \iff 
@@ -252,11 +254,11 @@
 				\begin{cases}
 					\langle x \rangle & \text{ if length}(\vec{l}) = 0 \\
 					\langle x, g_{\vec{l} \restriction \text{length}(\vec{l}-1)} \cdot x \rangle \frown 
-					\langle (\prod_{i \leq \text{length}(l)} g_i) \cdot x \rangle & \text{ else }
+					\langle (\prod_{i \leq \text{length}(\vec{l})} g_{\text{length}(\vec{l}) -i}) \cdot x \rangle & \text{ else }
 				\end{cases}
 			\]
 
-			Now $\text{min}(Path_{x,[y]_E})$ ends in $z$ can be expressed as:
+			Now $\text{min}(PATH_{x,[y]_E})$ ends in $z$ can be expressed as:
 			\begin{align*}
 				\exists n< \omega 
 				\exists \vec{i} \in \omega^{n}
@@ -278,7 +280,7 @@
 			By contradiction, let $\langle r_0 = s_0, r_1,..,r_n,r_{n+1},s_{k+1},..,s_1,s_0 = r_0$ be a $t$-cycle of minimal length.
 			Let $a_{2i-1} \ T \ a_{2i}$ witness $r_{i-1} \ t \ r_{i}$.
 			Let $b_{2i-1} \ T \ b_{2i}$ witness $s_{i_1} \ t \ s_i$.
-			Since the $t$-cycle is minimal, the elements are distinct. Therefore the same holds for $a_i,b_j$ (since $rho$ is a function).
+			Since the $t$-cycle is minimal, the elements are distinct. Therefore the same holds for $a_i,b_j$ (since $\rho$ is a function).
 			Consider the $T$-path passsing through $r_0$, $a_1$, $a_2$, $r_1$,..,$a_{2n +2}, r_{n+1} = s_{k+1},..,b_1,s_0$.
 			This is a $T$-cycle, contradiction.
 		\item $\{\text{classes of } E \} = \{\text{connected components of } t\}$
@@ -311,10 +313,10 @@
 		\item $\delta$ is cocycle for $E_a$: \\
 			We need to verify the following:
 			\begin{itemize}
-				\item $\delta(x_1,x_2) = \delta(x_2,x_3) \cdot \delta(x_1,x_2)$: \\
+				\item $\delta(x_1,x_3) = \delta(x_2,x_3) \cdot \delta(x_1,x_2)$: \\
 					$\delta(x_2,x_3) \cdot \delta(x_1,x_2) =
-					\rho(f(x_1),f(x_2)) \cdot \rho(f(x_1),f(x_2)) =
-					\rho (f(x_1),f(x_2)) = \delta(x_1,x_2)$
+					\rho(f(x_2),f(x_3)) \cdot \rho(f(x_1),f(x_2)) =
+					\rho (f(x_1),f(x_3)) = \delta(x_1,x_3)$
 				\item $\delta(x_1,x_2) \cdot x_1 = x_2$: \\
 					First observe that $x_1 E_a x_2 \Rightarrow \delta(x_1,x_2) \cdot x_1 E_a x_2$.
 					Now, by orbit-wise injectivity of $f$ we just need to check that 
