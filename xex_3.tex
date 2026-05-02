@@ -275,6 +275,12 @@
 			\end{align*}
 
 		\item $t$ does not contain cycles \\
+			By contradiction, let $\langle r_0 = s_0, r_1,..,r_n,r_{n+1},s_{k+1},..,s_1,s_0 = r_0$ be a $t$-cycle of minimal length.
+			Let $a_{2i-1} \ T \ a_{2i}$ witness $r_{i-1} \ t \ r_{i}$.
+			Let $b_{2i-1} \ T \ b_{2i}$ witness $s_{i_1} \ t \ s_i$.
+			Since the $t$-cycle is minimal, the elements are distinct. Therefore the same holds for $a_i,b_j$ (since $rho$ is a function).
+			Consider the $T$-path passsing through $r_0$, $a_1$, $a_2$, $r_1$,..,$a_{2n +2}, r_{n+1} = s_{k+1},..,b_1,s_0$.
+			This is a $T$-cycle, contradiction.
 		\item $\{\text{classes of } E \} = \{\text{connected components of } t\}$
 	\end{itemize}
 
