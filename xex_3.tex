@@ -298,11 +298,12 @@
 						y \in [x]_E & \Rightarrow y E x  \\
 							& \Rightarrow y F x      \\
 							& \Rightarrow \exists z_1,..,z_k (y =: z_0 \ T \ z_1 \ T .. T \ z_k \ T z_{k+1} := x) \\
-							& \Rightarrow \bigwedge_{i=0}^{k} (\rho(z_i,x) = 
-									\rho(z_{i+1},x) \lor \rho(z_i,x) \ t \ \rho(z_{i+1},x))
+							& \Rightarrow \bigwedge_{i=0}^{k} \bigg(\rho(z_i,x) = 
+									\rho(z_{i+1},x) \lor \rho(z_i,x) \ t \ \rho(z_{i+1},x) \bigg)
 					\end{align*}
 
-					At this point, deleting the duplicates in $\langle y = \rho(z_0),.., \rho(z_{k+1}) = x \rangle $,
+					At this point, deleting the duplicates (if any) in 
+					$\langle y = \rho(z_0,x),.., \rho(z_{k+1},x) = x \rangle $,
 					one obtains the desired $t$-sequence witnessing $y \in [x]_E$.
 			\end{itemize}
 	\end{itemize}
