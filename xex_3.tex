@@ -283,7 +283,28 @@
 			Since the $t$-cycle is minimal, the elements are distinct. Therefore the same holds for $a_i,b_j$ (since $\rho$ is a function).
 			Consider the $T$-path passsing through $r_0$, $a_1$, $a_2$, $r_1$,..,$a_{2n +2}, r_{n+1} = s_{k+1},..,b_1,s_0$.
 			This is a $T$-cycle, contradiction.
-		\item $\{\text{classes of } E \} = \{\text{connected components of } t\}$
+		\item $\{\text{classes of } E \} = \{\text{connected components of } t\}$ \\
+			Denote with $[x]_t$ the connected component of $x$. It is enough proving that $\forall x \in X \ ([x]_E = [x]_t)$. 
+			\begin{itemize}
+				\item $[x]_t \subseteq [x]_E$ : \\
+					\begin{align*}
+						y \in [x]_t & \Rightarrow \exists z_1,..,z_k (x \ t \ z_1 \ t .. t \ z_k \ t \ y) \\
+							& \Rightarrow x \ E \ z_1 \ E .. E \ z_k \ E \ y \\
+							& \Rightarrow x E y
+					\end{align*}
+
+				\item $[x]_E \subseteq [x]_t$ : \\
+					\begin{align*}
+						y \in [x]_E & \Rightarrow y E x  \\
+							& \Rightarrow y F x      \\
+							& \Rightarrow \exists z_1,..,z_k (y =: z_0 \ T \ z_1 \ T .. T \ z_k \ T z_{k+1} := x) \\
+							& \Rightarrow \bigwedge_{i=0}^{k} (\rho(z_i,x) = 
+									\rho(z_{i+1},x) \lor \rho(z_i,x) \ t \ \rho(z_{i+1},x))
+					\end{align*}
+
+					At this point, deleting the duplicates in $\langle y = \rho(z_0),.., \rho(z_{k+1}) = x \rangle $,
+					one obtains the desired $t$-sequence witnessing $y \in [x]_E$.
+			\end{itemize}
 	\end{itemize}
 
 \end{proof}
