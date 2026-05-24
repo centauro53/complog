@@ -46,7 +46,33 @@ In the following hf will stand for hyperfinite and hhf will stand for hyperhyper
 \end{esercizio}
 
 \begin{proof}
-	
+
+	Consider $f: \omega^{\omega} \to 2^{\omega}$ that maps $a \in \omega^{\omega}$ in the sequence obtained by the following steps:
+	\begin{enumerate}
+		\item Write any element of $a$ in binary 
+		\item Put each element in a column of an $\omega \times \omega$ matrix
+		\item Scan the matrix diagonally (i.e. if $M$ is the matrix, consider $\langle M(0,0), M(0,1), M(1,0), M(0,2), M(1,1), M(2,0),..\rangle$
+	\end{enumerate}
+
+	We claim $f$ is a Borel reduction from $E$ to $E_0$. This will be enough because $E_0$ is hf.
+	\begin{itemize}
+		\item $x E y \Rightarrow f(x) E_0 f(y)$:
+			Let $M,N$ the matrix associated to $x,y$ respectively.
+			Since $x E y$ we have that $\exists k \in \omega \forall n \geq k \forall m \ (M(n,m) = N(n,m))$.
+			Let $s \geq k$ such that 
+			\[
+				\forall t \geq s \forall r \leq k M(r,t) = N(r,t) = 0
+			\]
+
+			Then $\forall n \geq \frac{2s \cdot (2s +1)}{2} \ \big(f(x)(n) = f(y)(n)\big)$.
+
+		\item $f(x) E_0 f(y) \Rightarrow x E y$:
+			Let $k \in \omega$ such that $\forall n \geq k \ (f(x)(n) = f(y)(n))$. 
+			Then 
+			\[
+				\forall n \geq k \ (x(n) = y(n))
+			\]
+	\end{itemize}
 
 \end{proof}
 
@@ -62,7 +88,7 @@ In the following hf will stand for hyperfinite and hhf will stand for hyperhyper
 
 \begin{proof}
 
-	Since $E'$ is hf, we can write $E' = \bigcup_{n < \omega} E'_n$ with $<\langle E_n : n < \omega \rangle$ increasing sequence of hf cbers.
+	Since $E'$ is hf, we can write $E' = \bigcup_{n < \omega} E'_n$ with $\langle E_n : n < \omega \rangle$ increasing sequence of hf cbers.
 	Let $f: X \to X$ be a Borel reduction from $E$ to $E'$. 
 	For every $n < \omega$ define $x E_n y \iff f(x) E'_n f(y)$.
 	\begin{itemize}
@@ -77,14 +103,14 @@ In the following hf will stand for hyperfinite and hhf will stand for hyperhyper
 		\item $\bigcup_{n < \omega} E_n \subseteq E$ :
 
 			\begin{align}
-				x \bigcup_{n < \omega} E_n \Rightarrow x E_n y \text{ for some }n < \omega \Rightarrow
+				x \bigcup_{n < \omega} E_n y \Rightarrow x E_n y \text{ for some }n < \omega \Rightarrow
 				f(x) E'_n f(y) \text{ for some }n < \omega \Rightarrow f(x) E' f(y) \Rightarrow x E y
 			\end{align}
 
 		\item for all $n < \omega \ E_n$ is hf cber : 
 			
 			Fix $n < \omega$. Then $E_n$ is a cber because $f$,$E'_n$ are Borel and $E_n \subseteq E$.
-			$E_n$ is hf because by definition $f$ is a Borel reduction from $E_n$ to $E'_n$ and $E'_n$ is Borel.
+			$E_n$ is hf because $f$ is a Borel reduction from $E_n$ to $E'_n$ and $E'_n$ is hf.
 
 		\item $\langle E_n : n < \omega \rangle$ is increasing :
 
@@ -110,6 +136,22 @@ In the following hf will stand for hyperfinite and hhf will stand for hyperhyper
 \end{esercizio}
 
 \begin{proof}
+
+	Let $p,q$ in $Add(\omega,1)$ and let $p' \leq p, q' \leq q$ such that 
+	$dom(p) = dom(q), p'(n) = 0 \text{ if } n \not \in dom(p), q'(n) = 0 \text{ if } n \not \in dom(q)$.
+	Now define $\pi: Add(\omega,1) \to Add(\omega,1)$ by setting for all $r \in Add(\omega,1)$ and for all $n \in dom(r)$ 
+	\[
+		\pi(r)(n) =
+		\begin{cases}
+			p'(n) \text{ if } r(n) = q'(n) \\
+			q'(n) \text{ if } r(n) = p'(n) \\
+			r(n) \text{ else }
+		\end{cases}
+	\]
+
+	Observe that $\pi$ is an automorphism that can be extended to $\overline \pi : \overline{Add(\omega,1)} \to \overline{Add(\omega,1)}$.
+	We conclude since $\overline \pi (p') = q' \not \perp q'$.
+
 \end{proof}
 
 
@@ -125,6 +167,58 @@ For the next problem, let $k$ be a measurable cardinal with a normal measure $U$
 
 \begin{proof}
 	
+	WLOG we can assume we are considering the version of $P$ where for all $(s,A) \in P$ we have $max(s) < min(A)$.
+	Let $p,q \in P$. Let $p' \leq p, q' \leq q$ such that $|stem(p')| = |stem(q')| = l$ and  $p' = (s,A), q' = (t,A)$.
+	Let $G$ generic such that $p' \in G$. We want to find $H$ generic such that $q' \in H$ and $M[G] = M[H]$.
+	If $\vec{\alpha}, \vec{\beta}$ are the generic sequences associated to $G, H$ respectively, then $M[G] = M[H]$ is 
+	equivalent to $|\vec{\alpha} \triangle \vec{\beta}| < \omega$.
+	So it is enough showing that there exists $\vec{\beta}$ generic sequence such that coincide with $\vec{\alpha}$ on a tail
+	and such that $stem(q') \subseteq \vec{\beta}$.
+
+	Consider $\vec{\beta}$ defined as
+	\[
+		\vec{\beta}(n) =
+		\begin{cases}
+			stem(q')(n) \text{ if } n \leq l \\
+			\vec{\alpha}(n) \text{ else } 
+		\end{cases}
+	\]
+
+	\begin{itemize}
+		\item $\vec{\alpha}, \vec{\beta}$ coincide on a tail :
+			This is directly from definition.
+		\item $\vec{\beta}$ extends $stem(q')$ :
+			This is directly from definition.
+		\item $\vec{\beta}$ is a generic sequence :
+			Consider 
+			\[
+				H = \{(x,B) \in P : x \text{ is initial segment of } \vec{\beta}, \big(\vec{\beta}(|x| +1) \in B \big) \}
+			\]
+
+			It is clear that $\vec{\beta}$ is the generic sequence associated, but we need to verify $H$ is generic.
+			Let $D$ dense and let $D' = \{(s \frown z,C) : (t \frown z, C) \in D\}$.
+			\begin{itemize}
+				\item $D' \not = \emptyset$ because $D$ is dense.
+				\item $D'$ is dense under $p'$:
+					In fact let $(s \frown z,C) \leq p'$. 
+					By density of $D$ there exists $(t \frown z \frown u, B) \in D$ with $B \subseteq C$.
+					Then $(s \frown z \frown u,B) \in D'$.
+				\item $G \cap D' \not = \emptyset$:
+					In fact $p' \in G$, so one only needs to consider $\{r \in P : r \perp p'\} \cup D'$.
+			\end{itemize}
+
+			Let $(s \frown z, C) \in G \cap D'$. Then:
+			\begin{itemize}
+				\item $(t \frown z,C)$ is a valid condition because $max(s) = max(t)$
+				\item $(t \frown z,C) \in D$ because $(s \frown z,C) \in D'$ 
+				\item $(t \frown z,C) \in H$ because $\vec{\beta}$ extends $t \frown z$ and $\vec{\beta}(|t \frown z|+1) \in C$ since 
+					$\vec{\beta}(|t \frown z| +1) = \vec{\alpha}(|s \frown z| +1) \in C$ 
+					(being $G$ generic associated $\vec{\alpha}$).
+			\end{itemize}
+
+			So we have found $(t \frown z, C) \in H \cap D$
+
+	\end{itemize}
 
 \end{proof}
 
