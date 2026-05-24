@@ -49,9 +49,10 @@ In the following hf will stand for hyperfinite and hhf will stand for hyperhyper
 
 	Consider $f: \omega^{\omega} \to 2^{\omega}$ that maps $a \in \omega^{\omega}$ in the sequence obtained by the following steps:
 	\begin{enumerate}
-		\item Write any element of $a$ in binary 
-		\item Put each element in a column of an $\omega \times \omega$ matrix
-		\item Scan the matrix diagonally (i.e. if $M$ is the matrix, consider $\langle M(0,0), M(0,1), M(1,0), M(0,2), M(1,1), M(2,0),..\rangle$
+		\item Write the elements of $a$ in binary. 
+		\item Put each element from the previous step as a column of an $\omega \times \omega$ matrix
+		\item Scan the matrix diagonally (i.e. if $M$ is the matrix, consider the sequence given by
+			$\langle M(0,0), M(0,1), M(1,0), M(0,2), M(1,1), M(2,0),..\rangle$)
 	\end{enumerate}
 
 	We claim $f$ is a Borel reduction from $E$ to $E_0$. This will be enough because $E_0$ is hf.
@@ -116,8 +117,7 @@ In the following hf will stand for hyperfinite and hhf will stand for hyperhyper
 
 			In fact $\langle E'_n : n < \omega \rangle$ is increasing, so we get
 			\begin{align}
-				x E_n y \Rightarrow f(x) E'_n f(y) \Rightarrow f(x) E'_{n+1} f(y) \Rightarrow f(x) E' f(y) 
-				\Rightarrow x E y
+				x E_n y \Rightarrow f(x) E'_n f(y) \Rightarrow f(x) E'_{n+1} f(y) \Rightarrow x E_{n+1} y
 			\end{align}
 
 	\end{itemize}
@@ -192,8 +192,13 @@ For the next problem, let $k$ be a measurable cardinal with a normal measure $U$
 		\item $\vec{\beta}$ is a generic sequence :
 			Consider 
 			\[
-				H = \{(x,B) \in P : x \text{ is initial segment of } \vec{\beta}, \big(\vec{\beta}(|x| +1) \in B \big) \}
+				H = \{(x,B) \in P : x \text{ is initial segment of } \vec{\beta}, 
+				\forall n \in \omega \big(\vec{\beta}(|x| +n) \in B \big) \}
 			\]
+
+			Observe that $G$ must be made in a similar fashion: $(y,C) \in G \Rightarrow y \subseteq \vec{\alpha}$. Furthermore 
+			$\forall n \big(\vec{\alpha}(|y|+n) \in C \big)$ because otherwise any element of $G$ whose stem is 
+			$\vec{\alpha} \restriction{|y|+n}$ (which must exist) would be incompatible with $(y,C))$.
 
 			It is clear that $\vec{\beta}$ is the generic sequence associated, but we need to verify $H$ is generic.
 			Let $D$ dense and let $D' = \{(s \frown z,C) : (t \frown z, C) \in D\}$.
@@ -211,9 +216,9 @@ For the next problem, let $k$ be a measurable cardinal with a normal measure $U$
 			\begin{itemize}
 				\item $(t \frown z,C)$ is a valid condition because $max(s) = max(t)$
 				\item $(t \frown z,C) \in D$ because $(s \frown z,C) \in D'$ 
-				\item $(t \frown z,C) \in H$ because $\vec{\beta}$ extends $t \frown z$ and $\vec{\beta}(|t \frown z|+1) \in C$ since 
-					$\vec{\beta}(|t \frown z| +1) = \vec{\alpha}(|s \frown z| +1) \in C$ 
-					(being $G$ generic associated $\vec{\alpha}$).
+				\item $(t \frown z,C) \in H$ because $\vec{\beta}$ extends $t \frown z$ and 
+					$\forall n \big(\vec{\beta}(|t \frown z|+n) \in C \big)$ since 
+					$\vec{\beta}(|t \frown z| +n) = \vec{\alpha}(|s \frown z| +n) \in C$
 			\end{itemize}
 
 			So we have found $(t \frown z, C) \in H \cap D$
