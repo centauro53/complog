@@ -1,0 +1,133 @@
+\documentclass[a4paper,12pt]{article}
+
+\title{Blocco 3}
+\author{Leonardo Centazzo}
+\date{\today}
+
+
+% Pacchetti essenziali
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+\usepackage{geometry}
+
+% Impostazioni pagina minime
+\geometry{a4paper, margin=2cm}
+
+% Stili per teoremi, proposizioni, ecc.
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}
+\newtheorem{proposizione}{Proposizione}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollario}{Corollario}
+
+\theoremstyle{definition}
+\newtheorem{definizione}[teorema]{Definizione}
+\newtheorem{esempio}[teorema]{Esempio}
+\newtheorem{esercizio}{Esercizio}
+\newtheorem{osservazione}[teorema]{Osservazione}
+
+\newtheorem*{warning}{Warning}
+
+\theoremstyle{remark}
+\newtheorem{nota}[teorema]{Nota}
+
+
+\begin{document}
+
+\maketitle
+
+In the following hf will stand for hyperfinite and hhf will stand for hyperhyperfinite.
+
+\begin{esercizio}
+
+	Define an equivalence relation on the Baire space by setting
+	$x E y$ iff for all large $n$, $x_n = y_n$. Prove that $E$ is hf.
+
+\end{esercizio}
+
+\begin{proof}
+	
+
+\end{proof}
+
+
+
+
+
+\begin{esercizio}
+
+	Show that $E \leq_B E'$ and $E'$ is hhf, then $E$ is also hhf.
+
+\end{esercizio}
+
+\begin{proof}
+
+	Since $E'$ is hf, we can write $E' = \bigcup_{n < \omega} E'_n$ with $<\langle E_n : n < \omega \rangle$ increasing sequence of hf cbers.
+	Let $f: X \to X$ be a Borel reduction from $E$ to $E'$. 
+	For every $n < \omega$ define $x E_n y \iff f(x) E'_n f(y)$.
+	\begin{itemize}
+
+		\item $E \subseteq \bigcup_{n < \omega} E_n$ :
+
+			\begin{align}
+				x E y \Rightarrow f(x) E' f(y) \Rightarrow f(x) E'_n f(y) \text{ for some }n < \omega
+				\Rightarrow x E_n y \Rightarrow x \bigcup_{n < \omega} E_n y
+			\end{align}
+
+		\item $\bigcup_{n < \omega} E_n \subseteq E$ :
+
+			\begin{align}
+				x \bigcup_{n < \omega} E_n \Rightarrow x E_n y \text{ for some }n < \omega \Rightarrow
+				f(x) E'_n f(y) \text{ for some }n < \omega \Rightarrow f(x) E' f(y) \Rightarrow x E y
+			\end{align}
+
+		\item for all $n < \omega \ E_n$ is hf cber : 
+			
+			Fix $n < \omega$. Then $E_n$ is a cber because $f$,$E'_n$ are Borel and $E_n \subseteq E$.
+			$E_n$ is hf because by definition $f$ is a Borel reduction from $E_n$ to $E'_n$ and $E'_n$ is Borel.
+
+		\item $\langle E_n : n < \omega \rangle$ is increasing :
+
+			In fact $\langle E'_n : n < \omega \rangle$ is increasing, so we get
+			\begin{align}
+				x E_n y \Rightarrow f(x) E'_n f(y) \Rightarrow f(x) E'_{n+1} f(y) \Rightarrow f(x) E' f(y) 
+				\Rightarrow x E y
+			\end{align}
+
+	\end{itemize}
+
+	We conclude observing that $E = \bigcup_{n < \omega} E_n$ witnesses $E$ hf.
+
+\end{proof}
+
+
+
+
+\begin{esercizio}
+
+	Show that the Cohen forcing $Add(\omega,1)$ is weakly homogeneous.
+
+\end{esercizio}
+
+\begin{proof}
+\end{proof}
+
+
+
+
+For the next problem, let $k$ be a measurable cardinal with a normal measure $U$ and let $P$ be the Prickry forcing at $k$.
+
+\begin{esercizio}
+
+	Prove that $P$ is weakly homogeneous.
+
+\end{esercizio}
+
+\begin{proof}
+	
+
+\end{proof}
+
+
+\end{document}
+
