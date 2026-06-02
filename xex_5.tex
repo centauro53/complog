@@ -36,13 +36,36 @@
 
 \maketitle
 
+For the next two problems, suppose that $\mathcal{F}$ is a nonprincipal, $k$-complete filter on $k$.
+Define the dual ideal $I = \{A \subseteq k : k \setminus A \in \mathcal{F}\}$.
+We say that $A \subset k$ is a positive set if $A \not \in I$ (equivalently, for all $C \in \mathcal{F}$, $C \cap A \not = \emptyset$).
+For a positive set $A$ we say that $f: A \to k$ is regressive if for all $\alpha \in A$, $f(\alpha) < \alpha$.
 
 \begin{esercizio}
+
+	Suppose that for all $A \subseteq k$, $A \not \in I$ and regressive function $f: A \to k$, $f$ is constant on a positive subset of $A$.
+	Show that $\mathcal{F}$ is closed under diagonal intersections.
 
 \end{esercizio}
 
 \begin{proof}
-	
+
+	Let $C_i \in \mathcal{F}$ for $i < k$ and let $D = \triangle_i C_i$. 
+	By contradiction, assume $D \not \in \mathcal{F}$. Then $D^{c} \not \in I$, which means that $D^{c}$ is positive.
+	Consider $f: D^{c} \to k, \alpha \mapsto \text{min}\{i < \alpha : \alpha \not \in C_i \}$.
+	\begin{itemize}
+		\item $f$ well defined:
+			$\alpha \in D^{c} \Rightarrow \exists i < \alpha \ \big( \alpha \not \in C_i \big)$, so we have that 
+			for all $\alpha \in D^{c}$, $\{i < \alpha : \alpha \not \in C_i\} \not = \emptyset$.
+			It has minimum because $\subseteq ON$.
+
+		\item $f$ regressive: by definition
+	\end{itemize}
+
+	Let $P \subseteq D^{c}$ positive such that $f \restriction{P} = cost_{\beta}$.
+	Now observe that $P \cap C_{\beta} = \emptyset$: in fact $p \in P \Rightarrow f(p) = \beta \Rightarrow p \not \in C_{\beta}$.
+	Thus we reached a contradiction because $P$ is positive, $C_{\beta} \in \mathcal{F}$ but $P \cap \mathcal{F} = \emptyset$.
+
 \end{proof}
 
 
@@ -51,7 +74,17 @@
 
 \begin{esercizio}
 
+	Suppose that $\mathcal{F}$ is closed under diagonal intersections.
+	Show that for all $A \subseteq k, A \not \in I$ and regressive $f: A \to k$, $f$ is constant on a positive subset of $A$.
+
 \end{esercizio}
+
+	For all $i < k$, let $N_i = f^{-1}\{i\}$. By contradiction, assume for all $i < k$, $N_i$ is negative (meaning not positive).
+	Then for all $i < k$, let $C_i \in \mathcal{F}$ such that $C_i \cap N_i = \emptyset$.
+	Consider $C = \triangle_i C_i$. Then $C \in \mathcal{F}$. Since $A$ is positive, we have $A \cap C \not = \emptyset$.
+	Let $\alpha \in A \cap C$. Since $\alpha \in C$ we have that $\forall i< \alpha \big(\alpha \in C_i \big)$.
+	This means that $\forall i<\alpha \big( f(\alpha) \not = i \big)$. Equivalently, $f(\alpha) \geq \alpha$, which is a contradiction
+	since $f$ is regressive.
 
 \begin{proof}
 
@@ -59,8 +92,10 @@
 
 
 
+For the next two problems let $k$ be a measurable cardinal with normal measure $U$ and let $P$ be the Prickry forcing at $k$.
 
 \begin{esercizio}
+
 
 \end{esercizio}
 
