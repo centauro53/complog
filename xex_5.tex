@@ -96,10 +96,38 @@ For the next two problems let $k$ be a measurable cardinal with normal measure $
 
 \begin{esercizio}
 
+	Suppose that $G$ is $P$-generic over the ground model $V$.
+	Let $\vec{\alpha} = \bigcup_{(s,A) \in G} s$ and let 
+	$G_{\vec{\alpha}} = \{(s,A) : \exists n \big( \vec{\alpha} \restriction n = s , \forall k \geq n \alpha_k \in A \big) \}$.
+	Prove that $G = G_{\vec{\alpha}}$.
 
 \end{esercizio}
 
 \begin{proof}
+
+	
+	\begin{itemize}
+		\item $G \subseteq G_{\vec{\alpha}}$:
+			Let $(s,A) \in G$. Then by definition of $\vec{\alpha}$ we have that $s$ must be an initial segment of $\vec{\alpha}$.
+			By contradiction, assume $\{n> |s| : \vec{\alpha}(n) \not \in A\} \not = \emptyset$.
+			Let $m$ be minimum of the above set. Let $(t,B) \in G$ such that $|t| \geq m$.
+			Such an element exists by genericity of $G$.
+			Since $(s,A), (t,B)$ must be compatible we have that $t(n) \in A$ for all $n > |s|$. 
+			In particular $\vec{\alpha}(m) = t(m) \in A$, contradiction.
+			
+		\item $G_{\vec{\alpha}} \subseteq G$:
+			Let $(s,A) \in G_{\vec{\alpha}}$. Consider $D = \{(t,B) : |t| \geq |s|, B \subseteq A\}$.
+			$D$ is dense because if we take $(z,C) \in P$ (if necessary) we can extend $z$ with the least elements of $C$ until
+			we reach length $|s|$. Let's say we concatenated $\overline{c}$. 
+			Then $(z,C) \geq (z \frown \overline{c}, C \setminus \overline{c}) 
+			\geq (z \frown \overline{c}, (C \setminus \overline{c}) \cap A) \in D$.
+			Since $G$ generic and $D$ dense, we have $G \cap D \not = \emptyset$. 
+			Let $(t,B) \in G \cap D$. From $(t,B) \in G$ we get $t$ initial segment of $\vec{\alpha}$.
+			Combined with $(t,B) \in D$ we deduce $t$ extends $s$ with elements in $A$.
+			Finally from $(t,B) \in D$ we deduce $B \subseteq A$ and conclude $(t,B) \leq (s,A)$.
+			Since $(t,B) \in G$ we have $(s,A) \in G$.
+
+	\end{itemize}
 \end{proof}
 
 
