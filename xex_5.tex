@@ -132,13 +132,46 @@ For the next two problems let $k$ be a measurable cardinal with normal measure $
 
 
 
-
+All the notation for the following exercise is intended as the one used in the lessons unless otherwise specified.
+So for example $j: V \to M$ is elementary embedding, $M$ is the ultraproduct, $k^{M} = [Id]$, $M^{k} \subseteq M$, $M \subseteq V$.
 
 \begin{esercizio}
+	
+	Suppose that in the ground model $V$, $2^{k} = k^{++}$ and $G$ is $P$-generic over $V$.
+	Suppose that $\langle k_n : n < \omega \rangle$ is the Prikry sequence added by $G$.
+	Show that for all large $n$, $k_n$ is a cardinal and $2^{k_n} = k_n ^{++}$.
+	
 \end{esercizio}
 
-\begin{proof}
-	
+\begin{proof}		
+
+	Consider $B = \{\lambda \in k : \lambda \text{ is a cardinal and } 2^{\lambda} = \lambda^{++}\}$.
+	We claim that $B \in U$. This is equivalent to $M \models 2^{k} = k^{++}$ by Los Theorem.
+	\begin{itemize}
+		\item $k^{+}^M = k^{+}^V$ : In fact, since $M \subseteq V$ we have $k^{+}^M \leq k^{+}^{V}$. 
+			If by contradiction $k^{+}^{M} < k^{+}^{V}$, then there would exist $f \in V, f:k \to k^{+}^{M}$ surjective.
+			Since $M^{k} \subseteq M$ we have $f \in M$, so $(k = k^{+})^M$, a contradiction.
+			In particular from now on we simply write $\lambda$ to denote $k^{+}^{V}, k^{+}^{M}$, since they are the same.
+
+		\item $2^{k} ^M = 2^{k} ^V$: Since $M \subseteq V$ we have $2^{k} ^M \subseteq 2^{k} ^V$. Since $M^{k} \subseteq M$ the other
+			inclusion holds as well.
+
+		\item $k^{++}^M = k^{++}^V$: Otherwise, let $\beta = k^{++}$ and $\gamma = k^{++}^M$.
+			Then $\beta > \gamma$, so $j(\beta) > j(\gamma)$.
+			Also let $g: \gamma \to k^+$ bijection. Then $j(g)$ is a bijection from $j(\gamma) \to j(k^{+})$ in $M$.
+			Now consider $\phi(x,y) : x,y \text{ are cardinals and } y \text{ cardinal successor of } x$.
+			Since $\phi(\k^{+},\beta)$ we have $(\phi(j(k^+),j(\beta))^M$.
+			Since $\phi(\k,k^+)$ we have $(\phi(j(k),j(k^+))^M$.
+			Therefore $M \models j(\beta) = j(k)^{++}$.
+
+	\end{itemize}
+	Now since in $V$ it is true that $2^{k} = k^{++}$ and all cardinals in the equation are the same in $M$, we deduce that the equation
+	holds in $M$ as well.
+
+	From $B \in U$ we deduce that $D = \{(s,A) : A \susbeteq B\}$ is dense.
+	Then $G \cap D \not = \emptset$. Let $(s,A) \in G \cap D$.
+	Then for all $n > |s| \ \big( k_n \in A \big)$, which implies for all $n > |s| \ \big( k_n \text{ is a cardinal and } 2^{k_n} = k_n ^{++}\big)$.
+
 \end{proof}
 
 
