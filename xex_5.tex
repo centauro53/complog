@@ -79,14 +79,13 @@ For a positive set $A$ we say that $f: A \to k$ is regressive if for all $\alpha
 
 \end{esercizio}
 
+\begin{proof}
 	For all $i < k$, let $N_i = f^{-1}\{i\}$. By contradiction, assume for all $i < k$, $N_i$ is negative (meaning not positive).
 	Then for all $i < k$, let $C_i \in \mathcal{F}$ such that $C_i \cap N_i = \emptyset$.
 	Consider $C = \triangle_i C_i$. Then $C \in \mathcal{F}$. Since $A$ is positive, we have $A \cap C \not = \emptyset$.
 	Let $\alpha \in A \cap C$. Since $\alpha \in C$ we have that $\forall i< \alpha \big(\alpha \in C_i \big)$.
 	This means that $\forall i<\alpha \big( f(\alpha) \not = i \big)$. Equivalently, $f(\alpha) \geq \alpha$, which is a contradiction
 	since $f$ is regressive.
-
-\begin{proof}
 
 \end{proof}
 
@@ -148,28 +147,22 @@ So for example $j: V \to M$ is elementary embedding, $M$ is the ultraproduct, $k
 	Consider $B = \{\lambda \in k : \lambda \text{ is a cardinal and } 2^{\lambda} = \lambda^{++}\}$.
 	We claim that $B \in U$. This is equivalent to $M \models 2^{k} = k^{++}$ by Los Theorem.
 	\begin{itemize}
-		\item $k^{+}^M = k^{+}^V$ : In fact, since $M \subseteq V$ we have $k^{+}^M \leq k^{+}^{V}$. 
-			If by contradiction $k^{+}^{M} < k^{+}^{V}$, then there would exist $f \in V, f:k \to k^{+}^{M}$ surjective.
+		\item $(k^{+})^M = (k^{+})^V$ : In fact, since $M \subseteq V$ we have $(k^{+})^M \leq (k^{+})^{V}$. 
+			If by contradiction $(k^{+})^{M} < (k^{+})^{V}$, then there would exist $f \in V, f:k \to (k^{+})^{M}$ surjective.
 			Since $M^{k} \subseteq M$ we have $f \in M$, so $(k = k^{+})^M$, a contradiction.
-			In particular from now on we simply write $\lambda$ to denote $k^{+}^{V}, k^{+}^{M}$, since they are the same.
+			In particular from now on we simply write $\lambda$ to denote $(k^{+})^{V}, (k^{+})^{M}$, since they are the same.
 
-		\item $2^{k} ^M = 2^{k} ^V$: Since $M \subseteq V$ we have $2^{k} ^M \subseteq 2^{k} ^V$. Since $M^{k} \subseteq M$ the other
+		\item $(2^{k})^M = (2^{k})^V$: Since $M \subseteq V$ we have $(2^{k})^M \subseteq (2^{k})^V$. Since $M^{k} \subseteq M$ the other
 			inclusion holds as well.
 
-		\item $k^{++}^M = k^{++}^V$: Otherwise, let $\beta = k^{++}$ and $\gamma = k^{++}^M$.
-			Then $\beta > \gamma$, so $j(\beta) > j(\gamma)$.
-			Also let $g: \gamma \to k^+$ bijection. Then $j(g)$ is a bijection from $j(\gamma) \to j(k^{+})$ in $M$.
-			Now consider $\phi(x,y) : x,y \text{ are cardinals and } y \text{ cardinal successor of } x$.
-			Since $\phi(\k^{+},\beta)$ we have $(\phi(j(k^+),j(\beta))^M$.
-			Since $\phi(\k,k^+)$ we have $(\phi(j(k),j(k^+))^M$.
-			Therefore $M \models j(\beta) = j(k)^{++}$.
+		\item $(k^{++})^M = (k^{++})^V$: I don't know if it is true. In any case I'd like to receive the solution of the exercise.
 
 	\end{itemize}
 	Now since in $V$ it is true that $2^{k} = k^{++}$ and all cardinals in the equation are the same in $M$, we deduce that the equation
 	holds in $M$ as well.
 
-	From $B \in U$ we deduce that $D = \{(s,A) : A \susbeteq B\}$ is dense.
-	Then $G \cap D \not = \emptset$. Let $(s,A) \in G \cap D$.
+	From $B \in U$ we deduce that $D = \{(s,A) : A \subseteq B\}$ is dense.
+	Then $G \cap D \not = \emptyset$. Let $(s,A) \in G \cap D$.
 	Then for all $n > |s| \ \big( k_n \in A \big)$, which implies for all $n > |s| \ \big( k_n \text{ is a cardinal and } 2^{k_n} = k_n ^{++}\big)$.
 
 \end{proof}
