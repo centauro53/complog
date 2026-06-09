@@ -37,23 +37,114 @@
 \maketitle
 
 
+\begin{warning}
+
+	In the following we will adopt the following conventions: 
+	\begin{itemize}
+		\item In each exercise, $P$ will denote the poset used
+		\item When something coincide when seen in $V$ or in $V[G]$ we we'll not specify where we are looking at it.
+			So for example we we'll always write $\omega$ instead of $\omega^{V}$, $\omega^{V[G]}$.
+	\end{itemize}
+
+\end{warning}
+
+
+For the next problem you can use that for inaccessible $\lambda$, $Col(\omega_1,<\lambda)$ has the $\lambda-cc$ and 
+if $G$ is a $Col(\omega_1,<\lambda)$-generic filter over the ground model $V$, then $V[G] \models \lambda = \omega_2$.
+
 \begin{esercizio}
+
+	Suppose that $\lambda$ inaccessible. Show that $Col(\omega_1,<\lambda)$ forces that CH holds.
+	
+\end{esercizio}
+
+\begin{proof}
+
+	Since $\omega < \lambda$, we have by inaccessibility of $\lambda$ that $|2^{\omega}| < \lambda$.
+	Let $G$ be a generic filter for $P$. First we claim that, since $P$ is $\omega_1$-closed, we have  $(2^{\omega})^V = (2^{\omega})^{V[G]}$.
+	\begin{itemize}
+		\item $(2^{\omega})^{V} \subseteq (2^{\omega})^{V[G]}$: because $V \subseteq V[G]$.
+		\item $(2^{\omega})^{V} \supseteq (2^{\omega})^{V[G]}$: Let $V[G] \models A \subseteq \omega$.
+			We want to show that $A \in V$. Let $\dot{A}$ be a $P$-name over $V$ for $A$.
+			Now consider $\langle p_n : n < \omega \rangle$, defined inductively as follows:
+			\begin{enumerate}
+
+				\item $n = 0$:
+					\begin{itemize}
+						\item if $V[G] \models 0 \in A$ take $p_0 \in G$ such that $p_0 \Vdash \check{0} \in \dot{A}$
+						\item if $V[G] \models 0 \not \in A$ take $p_0 \in G$ such that $p_0 \Vdash \check{0} \not \in \dot{A}$
+					\end{itemize}
+
+				\item $n \Rightarrow n+1$:
+					\begin{itemize}
+						\item if $V[G] \models n+1 \in A$ take $p_{n+1} \in G, p_{n+1} \leq p_n$ such that 
+							$p_{n+1} \Vdash \check{n+1} \in \dot{A}$
+
+						\item if $V[G] \models n+1 \not \in A$ take $p_{n+1} \in G, p_{n+1} \leq p_n$ such that 
+							$p_{n+1} \Vdash \check{n+1} \not \in \dot{A}$
+
+
+					\end{itemize}
+
+			\end{enumerate}
+	\end{itemize}
+			Now let $\overline{p} \in G, \overline{p} \leq p_n$ for all $n<\omega$.
+			Such an element exists because one can consider 
+			$p' = \bigcup_{n} p_n, D = \{q : q \leq p'\} \cup \bigcup_{n} \{q: q \perp p_n\}$.
+			We claim that $D$ is dense. In fact, let $r \in P$. If $r \perp p_n$ for some $n < \omega$ we already have $r \in D$.
+			So we can assume $r \perp p_n$ for all $n < \omega$.
+			Define $\langle r_n : n< \omega \rangle$ as follows:
+			\begin{enumerate}
+				\item $n=0$: take $r_0 \leq r,p_0$
+				\item $n \Rightarrow n+1$: 
+					\begin{itemize}
+						\item if $r_n \perp p_{n+1}$ then we have $r_n \in D, r_n \leq r$ so one can stop. 
+						\item othewise take $r_{n+1} \leq r_n, p_{n+1}$.
+					\end{itemize}
+			\end{enumerate}
+
+			If the sequence stopped we proved the density, so assume the sequence did not stop. In this case take 
+			$r' = \bigcup_{n} r_{n}$. Then we have $r' \leq p_n$ for all $n < \omega$, which implies $r' \leq p'$.
+			So we have $r' \in D, r' \leq p_n$ for all $n< \omega$, which proves the density of $D$.
+
+			Since $D \in M$ is dense and $G$ is generic we have $G \cap D \not = \emptyset$.
+			Let $\overline{p} \in D \cap G$. Since $p_n \in G$ for all $n < \omega$ it must be $\overline{p} \leq p_n$ for all $n < \omega$.
+			So $\overline{p}$ is the element we were looking for.
+
+			Now consider $B = \{n : \overline{p} \Vdash \check{n} \in \dot{A}\}$. Note that $B \in M$ since one can use the equivalent 
+			internal definiton of forcing. We claim $B = A$.
+
+			\begin{itemize}
+				\item $A \subseteq B$:
+					$n \in A \Rightarrow \exists r \in G \big( r \Vdash \check{n} \in \dot{A} \big) \Rightarrow 
+					\overline{p} \Vdash \check{n} \in \dot{A}$ because otherwise $\overline{p},r \in G$ would be incompatible.
+				\item $A \supseteq B$:
+					$n \in B \Rightarrow \overline{p} \Vdash \check{n} \in \dot{A} \Rightarrow V[G] \models n \in A$.
+			\end{itemize}
+
+			This means that $\mathcal{P}(\omega) ^V = \mathcal{P}(\omega) ^{V[G]}$.
+			Now observe that $|2^{\omega}| ^V \geq |2^{\omega}|^{V[G]}$ and since $|2^{\omega}|^V \in \lambda$ we get 
+			$|2^{\omega}|^V[G] \in \lambda$. Furthermore from $V[G] \models \lambda = \omega_2$ we get $V[G] \models |2^{\omega}| < \omega_2$.
+			Since $V \models ZFC$ and $2^{\omega} \geq \omega_1$ is a theorem of ZFC, we also get 
+			$V[G] \models |2^{\omega}| \geq \omega_1$.
+			So we conclude $V[G] \models |2^{\omega}| = \omega_1$.
+
+\end{proof}
+
+
+
+For the next problem, recall that $Add(\omega_1,1)$ is the poset to add one Cohen subset of $\omega_1$. More precisely,
+$Add(\omega_1,1) = \{p: \omega_1 \to 2 : |p| \leq \omega\}$, ordered by reverse inclusion.
+
+\begin{esercizio}
+
+	Suppose that $G$ is $Add(\omega_1,1)$-generic over the ground model $V$. Show that $V[G] \models CH$.
 
 \end{esercizio}
 
 \begin{proof}
 	
-\end{proof}
-
-
-
-
-
-\begin{esercizio}
-
-\end{esercizio}
-
-\begin{proof}
+	As in the previous exercise, observe that $(2^{\omega})^V = (2^{\omega})^{V[G]}$ because $P$ is $\omega_1$-closed.
 
 \end{proof}
 
