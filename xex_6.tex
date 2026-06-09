@@ -41,9 +41,10 @@
 
 	In the following we will adopt the following conventions: 
 	\begin{itemize}
-		\item In each exercise, $P$ will denote the poset used
+		\item In each exercise, $P$ will denote the poset used.
 		\item When something coincide when seen in $V$ or in $V[G]$ we we'll not specify where we are looking at it.
 			So for example we we'll always write $\omega$ instead of $\omega^{V}$, $\omega^{V[G]}$.
+		\item We won't specify if something is considered in $V$ or in $V[G]$ if it is clear from the context.
 	\end{itemize}
 
 \end{warning}
@@ -92,7 +93,7 @@ if $G$ is a $Col(\omega_1,<\lambda)$-generic filter over the ground model $V$, t
 			Such an element exists because one can consider 
 			$p' = \bigcup_{n} p_n, D = \{q : q \leq p'\} \cup \bigcup_{n} \{q: q \perp p_n\}$.
 			We claim that $D$ is dense. In fact, let $r \in P$. If $r \perp p_n$ for some $n < \omega$ we already have $r \in D$.
-			So we can assume $r \perp p_n$ for all $n < \omega$.
+			So we can assume $r \not \perp p_n$ for all $n < \omega$.
 			Define $\langle r_n : n< \omega \rangle$ as follows:
 			\begin{enumerate}
 				\item $n=0$: take $r_0 \leq r,p_0$
@@ -105,7 +106,7 @@ if $G$ is a $Col(\omega_1,<\lambda)$-generic filter over the ground model $V$, t
 
 			If the sequence stopped we proved the density, so assume the sequence did not stop. In this case take 
 			$r' = \bigcup_{n} r_{n}$. Then we have $r' \leq p_n$ for all $n < \omega$, which implies $r' \leq p'$.
-			So we have $r' \in D, r' \leq p_n$ for all $n< \omega$, which proves the density of $D$.
+			So we have $r' \in D, r' \leq r$, which proves the density of $D$.
 
 			Since $D \in M$ is dense and $G$ is generic we have $G \cap D \not = \emptyset$.
 			Let $\overline{p} \in D \cap G$. Since $p_n \in G$ for all $n < \omega$ it must be $\overline{p} \leq p_n$ for all $n < \omega$.
@@ -124,8 +125,8 @@ if $G$ is a $Col(\omega_1,<\lambda)$-generic filter over the ground model $V$, t
 
 			This means that $\mathcal{P}(\omega) ^V = \mathcal{P}(\omega) ^{V[G]}$.
 			Now observe that $|2^{\omega}| ^V \geq |2^{\omega}|^{V[G]}$ and since $|2^{\omega}|^V \in \lambda$ we get 
-			$|2^{\omega}|^V[G] \in \lambda$. Furthermore from $V[G] \models \lambda = \omega_2$ we get $V[G] \models |2^{\omega}| < \omega_2$.
-			Since $V \models ZFC$ and $2^{\omega} \geq \omega_1$ is a theorem of ZFC, we also get 
+			$|2^{\omega}|^{V[G]} \in \lambda$. Furthermore from $V[G] \models \lambda = \omega_2$ we get $V[G] \models |2^{\omega}| < \omega_2$.
+			Since $V[G] \models ZFC$ and $|2^{\omega}| \geq \omega_1$ is a theorem of ZFC, we also get 
 			$V[G] \models |2^{\omega}| \geq \omega_1$.
 			So we conclude $V[G] \models |2^{\omega}| = \omega_1$.
 
@@ -144,7 +145,16 @@ $Add(\omega_1,1) = \{p: \omega_1 \to 2 : |p| \leq \omega\}$, ordered by reverse 
 
 \begin{proof}
 	
-	As in the previous exercise, observe that $(2^{\omega})^V = (2^{\omega})^{V[G]}$ because $P$ is $\omega_1$-closed.
+	As in the previous exercise, observe that $(2^{\omega})^V = (2^{\omega})^{V[G]}, (\omega_1)^V = (\omega_1)^{V[G]}$ because $P$ is $\omega_1$-closed.
+	Now let $g = \bigcup G \in V[G]$. Then $g$ will be the characterictic function of a subset of $\omega_1$. Let's call it $A$.
+	Now consider $f: \omega_1 \to \mathcal{P}(\omega), \alpha \mapsto B_{\alpha}$, where $n \in B_{\alpha} \iff \alpha + n \in A$.
+	We claim $f$ surjective. In fact let $B \subseteq \omega$.We want to find $\alpha < \omega_1$ such that $B_{\alpha} = B$.
+	Equivalently, we want to prove that $\{\alpha < \omega_1 : \forall n< \omega \big( n \in B \iff \alpha + n \in A \big) \} \not = \emptyset$.
+	Consider $D_B = \{p \in P : \exists \alpha< \omega_1 \forall n<\omega 
+	\bigg( \alpha + n \in dom(p) \land \big( p(\alpha + n) = 1 \iff n \in B \big) \bigg) \}$.
+	Then $D_{B} \in M$ and $D_B$ is dense by regularity of $\omega_1$.
+	Let $r_B \in D_B \cap G$. Then $r_B \Vdash \dot{B} \in \dot{ran(f)}$, which means that $V[G] \models f \text{ surjective }$.
+	Equivalently, $V[G] \models CH$.
 
 \end{proof}
 
